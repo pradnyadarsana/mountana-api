@@ -76,7 +76,7 @@ jobs:
         API_URL: ${{ secrets.API_URL }}
       #   API_TOKEN: ${{ secrets.API_TOKEN }}
       run: |
-        curl -X POST "$API_URL" \
+        curl -X GET "$API_URL" \
         # -H "Content-Type: application/json" \
         # -H "Authorization: Bearer $API_TOKEN" \
         # -d '{"key1":"value1", "key2":"value2"}'
