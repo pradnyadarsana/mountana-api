@@ -73,7 +73,7 @@ jobs:
 
     - name: Call Render API Deploy Hook
       env:
-        API_URL: ${{ secrets.API_URL }}
+        API_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
       #   API_TOKEN: ${{ secrets.API_TOKEN }}
       run: |
         curl -X GET "$API_URL" \
