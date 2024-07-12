@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Java CI with Maven
+name: Code Integration & Deployment
 
 on:
   push:
@@ -71,22 +71,12 @@ jobs:
 #         # Path to manifest Files
 #         manifest: ./k8s-deploy.yml
 
-    # - name: Deploy
-    #   uses: bankfliptech/deploy-to-render@v1
-    #   with:
-    #     serviceId: ${{ secrets.RENDER_SERVICE_ID }}
-    #     apiKey: ${{ secrets.RENDER_API_KEY }}
-    #     deployHookURL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
-
-    # - name: Render Deployment
-    #   # You may pin to the exact commit or the version.
-    #   # uses: sws2apps/render-deployment@71f9c369fdc647d975eb7f92d3f9bc603e1938d6
-    #   uses: sws2apps/render-deployment@v1.6.0
-    #   with:
-    #     # The Service ID of your Render service
-    #     serviceId: ${{ secrets.RENDER_SERVICE_ID }}
-    #     # Your personal API key to interact with Render
-    #     apiKey: ${{ secrets.RENDER_API_KEY }}
-    #     # Specify if having multiple deployment is allowed, optional, default is true
-    #     multipleDeployment: false 
-
+    - name: Call Render API Deploy Hook
+      env:
+        API_URL: ${{ secrets.API_URL }}
+      #   API_TOKEN: ${{ secrets.API_TOKEN }}
+      run: |
+        curl -X POST "$API_URL" \
+        # -H "Content-Type: application/json" \
+        # -H "Authorization: Bearer $API_TOKEN" \
+        # -d '{"key1":"value1", "key2":"value2"}'
